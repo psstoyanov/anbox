@@ -11,7 +11,7 @@ endif()
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -pedantic -Wno-variadic-macros -Wextra -fPIC")
+# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -pedantic -Wno-variadic-macros -Wextra -fPIC")
 
 # By default, all symbols are visible in the library. We strip out things we don't
 # want at link time, by running a version script (see unity-scopes.map and the
@@ -38,21 +38,21 @@ endif()
 
 string(TOLOWER "${CMAKE_BUILD_TYPE}" cmake_build_type_lower)
 
-if ("${cmake_build_type_lower}" STREQUAL "release" OR "${cmake_build_type_lower}" STREQUAL "relwithdebinfo")
-  option(Werror "Treat warnings as errors" ON)
-else()
-  option(Werror "Treat warnings as errors" OFF)
-endif()
+# if ("${cmake_build_type_lower}" STREQUAL "release" OR "${cmake_build_type_lower}" STREQUAL "relwithdebinfo")
+#   option(Werror "Treat warnings as errors" ON)
+# else()
+#   option(Werror "Treat warnings as errors" OFF)
+# endif()
 
-if (${Werror})
-    message(STATUS "Treat warnings as errors")
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
-  if ("${cmake_build_type_lower}" STREQUAL "release" OR "${cmake_build_type_lower}" STREQUAL "relwithdebinfo")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-error=deprecated-declarations")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=deprecated-declarations")
-  endif()
-endif()
+# if (${Werror})
+#     message(STATUS "Treat warnings as errors")
+#   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
+#   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+#   if ("${cmake_build_type_lower}" STREQUAL "release" OR "${cmake_build_type_lower}" STREQUAL "relwithdebinfo")
+#     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-error=deprecated-declarations")
+#     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=deprecated-declarations")
+#   endif()
+# endif()
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
